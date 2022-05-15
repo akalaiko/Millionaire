@@ -8,12 +8,12 @@
 import UIKit
 
 class MainMenu: UIViewController {
+    
+    private let recordsCaretaker = RecordsCaretaker()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        Game.shared.records = recordsCaretaker.receiveRecords()
     }
-
-
 }
 

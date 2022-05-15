@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "LADDER.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ladder.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wwtbam_logo" translatesAutoresizingMaskIntoConstraints="NO" id="65z-FC-p3g">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="65z-FC-p3g">
                                 <rect key="frame" x="134.5" y="-59" width="145" height="1024"/>
                             </imageView>
                         </subviews>
@@ -34,6 +34,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="wwtbam_logo" width="1024" height="1024"/>
+        <image name="logo" width="1024" height="1024"/>
     </resources>
 </document>

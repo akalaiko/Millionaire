@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF1C39C7282FB6020055B9F1 /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39C6282FB6020055B9F1 /* Questions.swift */; };
+		AF1C39C9282FBEB60055B9F1 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39C8282FBEB60055B9F1 /* GameScene.swift */; };
+		AF1C39CD283182660055B9F1 /* Records.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39CC283182660055B9F1 /* Records.swift */; };
+		AF1C39CF283184320055B9F1 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39CE283184320055B9F1 /* GameSession.swift */; };
+		AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D0283185BB0055B9F1 /* Game.swift */; };
+		AF1C39D3283186280055B9F1 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */; };
 		AFCD737A282EA45900BB56B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD7379282EA45900BB56B9 /* AppDelegate.swift */; };
 		AFCD737C282EA45900BB56B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */; };
 		AFCD737E282EA45900BB56B9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737D282EA45900BB56B9 /* MainMenu.swift */; };
@@ -16,6 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AF1C39C6282FB6020055B9F1 /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		AF1C39C8282FBEB60055B9F1 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		AF1C39CC283182660055B9F1 /* Records.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Records.swift; sourceTree = "<group>"; };
+		AF1C39CE283184320055B9F1 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		AF1C39D0283185BB0055B9F1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
 		AFCD7376282EA45900BB56B9 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCD7379282EA45900BB56B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +49,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF1C39D42831BACD0055B9F1 /* Fundamentals */ = {
+			isa = PBXGroup;
+			children = (
+				AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */,
+				AFCD7379282EA45900BB56B9 /* AppDelegate.swift */,
+			);
+			path = Fundamentals;
+			sourceTree = "<group>";
+		};
+		AF1C39D52831BB260055B9F1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				AFCD737F282EA45900BB56B9 /* Main.storyboard */,
+				AFCD7384282EA45B00BB56B9 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AF1C39D62831BB430055B9F1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AF1C39D0283185BB0055B9F1 /* Game.swift */,
+				AF1C39CE283184320055B9F1 /* GameSession.swift */,
+				AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AF1C39D72831BB960055B9F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AF1C39C6282FB6020055B9F1 /* Questions.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF1C39D82831BBC20055B9F1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AFCD737D282EA45900BB56B9 /* MainMenu.swift */,
+				AF1C39CC283182660055B9F1 /* Records.swift */,
+				AF1C39C8282FBEB60055B9F1 /* GameScene.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		AFCD736D282EA45900BB56B9 = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +114,12 @@
 		AFCD7378282EA45900BB56B9 /* WhoWantsToBeAMillionaire */ = {
 			isa = PBXGroup;
 			children = (
-				AFCD7379282EA45900BB56B9 /* AppDelegate.swift */,
-				AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */,
-				AFCD737D282EA45900BB56B9 /* MainMenu.swift */,
-				AFCD737F282EA45900BB56B9 /* Main.storyboard */,
+				AF1C39D42831BACD0055B9F1 /* Fundamentals */,
+				AF1C39D62831BB430055B9F1 /* Utilities */,
+				AF1C39D52831BB260055B9F1 /* Storyboards */,
+				AF1C39D72831BB960055B9F1 /* Models */,
+				AF1C39D82831BBC20055B9F1 /* ViewControllers */,
 				AFCD7382282EA45B00BB56B9 /* Assets.xcassets */,
-				AFCD7384282EA45B00BB56B9 /* LaunchScreen.storyboard */,
 				AFCD7387282EA45B00BB56B9 /* Info.plist */,
 			);
 			path = WhoWantsToBeAMillionaire;
@@ -138,9 +196,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF1C39CD283182660055B9F1 /* Records.swift in Sources */,
+				AF1C39D3283186280055B9F1 /* RecordsCaretaker.swift in Sources */,
+				AF1C39C9282FBEB60055B9F1 /* GameScene.swift in Sources */,
 				AFCD737E282EA45900BB56B9 /* MainMenu.swift in Sources */,
+				AF1C39C7282FB6020055B9F1 /* Questions.swift in Sources */,
+				AF1C39CF283184320055B9F1 /* GameSession.swift in Sources */,
 				AFCD737A282EA45900BB56B9 /* AppDelegate.swift in Sources */,
 				AFCD737C282EA45900BB56B9 /* SceneDelegate.swift in Sources */,
+				AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +358,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,8 +387,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
