@@ -88,7 +88,8 @@ final class Records: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath)
-        cell.subviews.forEach({ $0.removeFromSuperview() })
+        cell.subviews.forEach { $0.removeFromSuperview() }
+        
         setupLabelsInCell(indexPath: indexPath).forEach { cell.addSubview($0) }
         return cell
     }

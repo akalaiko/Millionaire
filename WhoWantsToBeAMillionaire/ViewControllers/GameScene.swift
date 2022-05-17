@@ -16,12 +16,9 @@ final class GameScene: UIViewController {
     
     private var chooseDifficultyStrategy: ChooseDiffilultyStrategy {
         switch difficulty {
-        case .easy:
-            return EasyModeStrategy()
-        case .hard:
-            return HardModeStrategy()
-        case .insane:
-            return InsaneModeStrategy()
+        case .easy: return EasyModeStrategy()
+        case .hard: return HardModeStrategy()
+        case .insane: return InsaneModeStrategy()
         }
     }
     
@@ -37,13 +34,13 @@ final class GameScene: UIViewController {
     @IBOutlet var answerB: UIButton!
     @IBOutlet var answerC: UIButton!
     @IBOutlet var answerD: UIButton!
-    var answerButtonsCollection = [UIButton]()
+    private var answerButtonsCollection = [UIButton]()
     
     @IBOutlet var removeTwoLifeline: UIButton!
     @IBOutlet var callFriendLifeline: UIButton!
     @IBOutlet var audienceHelpLifeline: UIButton!
     @IBOutlet var takeCashLifeline: UIButton!
-    var lifelineButtonsCollection = [UIButton]()
+    private var lifelineButtonsCollection = [UIButton]()
     
     @IBAction func exitToMainMenuButton() {
         takeCash()
@@ -73,14 +70,18 @@ final class GameScene: UIViewController {
     var playerName: String = ""
     private var questions = [Question]()
     var gameSession = GameSession()
-    var difficulty: Difficulty = .hard
+    var difficulty: Difficulty = .hard {
+        didSet {
+            gameSession.difficulty = difficulty
+        }
+    }
     
     var initialProgressIndicatorPosition = CGFloat()
     var score = 0
-    var questionNumber = 0 {
+    var questionNumber = Observable<Int>(0) {
         didSet {
-            gameSession.questionNumber = questionNumber
-            guard let score = scoreValues[questionNumber] else { return }
+            gameSession.questionNumber = questionNumber.value
+            guard let score = scoreValues[questionNumber.value] else { return }
             self.score = score
         }
     }
@@ -94,6 +95,9 @@ final class GameScene: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
+        questionNumber.addObserver(self, options: [.new, .initial], closure: { [weak self] (number, _) in
+            self?.title = "Question #\(number + 1)"
+        })
     }
     
     func initialSetup() {
@@ -107,10 +111,9 @@ final class GameScene: UIViewController {
     }
     
     func setupQuestion(action: UIAlertAction! = nil) {
-        title = "Question #\(questionNumber + 1)"
         answerButtonsCollection.forEach { $0.isEnabled = true }
-        if questionNumber > 0 { moveProgressIndicator() }
-        let currentQuestion = questions[questionNumber]
+        if questionNumber.value > 0 { moveProgressIndicator() }
+        let currentQuestion = questions[questionNumber.value]
         question.text = currentQuestion.question
         answerA.setTitle("A) " + currentQuestion.answers[0], for: .normal)
         answerB.setTitle("B) " + currentQuestion.answers[1], for: .normal)
@@ -132,8 +135,8 @@ final class GameScene: UIViewController {
     }
     
     func didAnsweredRight() {
-        questionNumber += 1
-        if questionNumber < 15 {
+        questionNumber.value += 1
+        if questionNumber.value < 15 {
             let ac = UIAlertController(title: "CORRECT!", message: "Your current score is: \(score)$", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: setupQuestion))
             present(ac, animated: true)
@@ -145,7 +148,7 @@ final class GameScene: UIViewController {
     func gameWon(action: UIAlertAction! = nil) {
         hideQuestion()
         let ac = UIAlertController(title: "CONGRATULATIONS!", message: "YOU WON \(score)$", preferredStyle: .alert)
-        if questionNumber == 15 { ac.addAction(UIAlertAction(title: "New Game", style: .default, handler: restartGame)) }
+        if questionNumber.value == 15 { ac.addAction(UIAlertAction(title: "New Game", style: .default, handler: restartGame)) }
         ac.addAction(UIAlertAction(title: "Exit", style: .default, handler: exitToMainMenu))
         present(ac, animated: true)
         delegate?.didEndGame(difficulty: difficulty, withScore: score, name: playerName, removeTwoUsed: gameSession.removeTwoUsed, callFriendUsed: gameSession.callFriendUsed, audienceHelpUsed: gameSession.audienceHelpUsed)
@@ -153,16 +156,12 @@ final class GameScene: UIViewController {
     
     func gameLost() {
         switch score {
-        case 0..<1000:
-            score = 0
-        case 1000..<32000:
-            score = 1000
-        case 32000..<1000000:
-            score = 32000
-        default:
-            break
+        case 0..<1000: score = 0
+        case 1000..<32000: score = 1000
+        case 32000..<1000000: score = 32000
+        default: break
         }
-        let ac = UIAlertController(title: "WRONG!", message: "Sorry, you've lost! Your score is: \(score)$", preferredStyle: .alert)
+        let ac = UIAlertController(title: "WRONG!", message: "Sorry, you've lost! \n Your score is: \(score)$", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "New game", style: .default, handler: restartGame))
         ac.addAction(UIAlertAction(title: "Exit", style: .default, handler: exitToMainMenu))
         present(ac, animated: true)
@@ -170,7 +169,7 @@ final class GameScene: UIViewController {
     }
     
     func restartGame(action: UIAlertAction! = nil) {
-        questionNumber = 0
+        questionNumber = Observable<Int>(0)
         questions = chooseDifficultyStrategy.setupGame(lifelineButtons: lifelineButtonsCollection)
         gameSession.removeTwoUsed = false
         gameSession.callFriendUsed = false
