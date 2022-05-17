@@ -10,20 +10,51 @@ import UIKit
 final class Records: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var difficultyControl: UISegmentedControl! {
+        didSet {
+            difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+            difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        }
+    }
+    @IBAction func difficultyChosen(_ sender: UISegmentedControl) {
+        self.tableView.reloadData()
+    }
     
-    @IBOutlet var difficultyControl: UISegmentedControl!
     @IBAction func clearButtonPressed(_ sender: UIBarButtonItem) {
         Game.shared.clearRecords()
         self.tableView.reloadData()
+    }
+    
+    private let dateFormater: DateFormatter = {
+        let dateFormater = DateFormatter()
+        dateFormater.dateStyle = .short
+        return dateFormater
+    }()
+    
+    private var selectedDifficulty: Difficulty {
+        switch self.difficultyControl.selectedSegmentIndex {
+        case 0: return .easy
+        case 1: return .hard
+        case 2: return .insane
+        default: return .easy
+        }
+    }
+    
+    private var recordsList: [Record] {
+        switch selectedDifficulty {
+        case .easy:
+            return Game.shared.records.filter { $0.difficulty == .easy }
+        case .hard:
+            return Game.shared.records.filter { $0.difficulty == .hard }
+        case .insane:
+            return Game.shared.records.filter { $0.difficulty == .insane }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-        difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -49,31 +80,21 @@ final class Records: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return header
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        60
-    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 60 }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        40
-    }
-    private let dateFormater: DateFormatter = {
-        let dateFormater = DateFormatter()
-        dateFormater.dateStyle = .short
-        return dateFormater
-    }()
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 40 }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Game.shared.records.count
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { recordsList.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath)
-            setupLabelsInCell(indexPath: indexPath).forEach { cell.addSubview($0) }
-            return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recordCell", for: indexPath)
+        cell.subviews.forEach({ $0.removeFromSuperview() })
+        setupLabelsInCell(indexPath: indexPath).forEach { cell.addSubview($0) }
+        return cell
     }
     
     func setupLabelsInCell(indexPath: IndexPath) -> [UIView]{
-        let record = Game.shared.records[indexPath.row]
+        let record = recordsList[indexPath.row]
 
         let nameLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width / 4, height: 40))
         let dateLabel = UILabel(frame: CGRect(x: tableView.bounds.width / 4, y: 0, width: tableView.bounds.width / 4, height: 40))
@@ -108,6 +129,8 @@ final class Records: UIViewController, UITableViewDelegate, UITableViewDataSourc
         case 1:
             let lifelineIcon = UIImageView(frame: CGRect(x: lifelinesUsedView.frame.width / 2 - 10, y: 10, width: 20, height: 20))
             if record.removeTwoUsed { lifelineIcon.image = UIImage(named: "5050") }
+            if record.callFriendUsed { lifelineIcon.image = UIImage(named: "call") }
+            if record.audienceHelpUsed { lifelineIcon.image = UIImage(named: "audience") }
             lifelinesUsedView.addSubview(lifelineIcon)
         case 2:
             let lifelineIcon2 = UIImageView(frame: CGRect(x: lifelinesUsedView.frame.width / 2 + 2, y: 10, width: 20, height: 20))

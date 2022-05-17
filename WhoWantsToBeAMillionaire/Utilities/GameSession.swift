@@ -8,6 +8,7 @@
 import Foundation
 
 class GameSession {
+    var difficulty: Difficulty = .hard
     var questionNumber: Int = 0
     var playerName: String = ""
     var removeTwoUsed = false

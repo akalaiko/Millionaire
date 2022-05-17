@@ -19,10 +19,24 @@ class MainMenu: UIViewController {
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
         present(alertController, animated: true)
+        alertController.removeFromParent()
     }
     
     private let recordsCaretaker = RecordsCaretaker()
     var name = ""
+    
+    private var selectedDifficulty: Difficulty {
+        switch self.difficultyControl.selectedSegmentIndex {
+        case 0:
+            return .easy
+        case 1:
+            return .hard
+        case 2:
+            return .insane
+        default:
+            return .hard
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +60,9 @@ class MainMenu: UIViewController {
             guard let destination = segue.destination as? GameScene else {
                 return
             }
-            
             destination.playerName = name
+            destination.difficulty = selectedDifficulty
+            
         default:
             break
         }

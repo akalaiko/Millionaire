@@ -14,6 +14,8 @@
 		AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D0283185BB0055B9F1 /* Game.swift */; };
 		AF1C39D3283186280055B9F1 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */; };
 		AF320255283301DA00DF4E42 /* RecordsTableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF320254283301DA00DF4E42 /* RecordsTableHeader.xib */; };
+		AFA94D0F283441BE00314031 /* ChooseDifficultyStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D0E283441BE00314031 /* ChooseDifficultyStrategy.swift */; };
+		AFA94D112834439E00314031 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D102834439E00314031 /* Difficulty.swift */; };
 		AFCD737A282EA45900BB56B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD7379282EA45900BB56B9 /* AppDelegate.swift */; };
 		AFCD737C282EA45900BB56B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */; };
 		AFCD737E282EA45900BB56B9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737D282EA45900BB56B9 /* MainMenu.swift */; };
@@ -30,6 +32,8 @@
 		AF1C39D0283185BB0055B9F1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
 		AF320254283301DA00DF4E42 /* RecordsTableHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordsTableHeader.xib; sourceTree = "<group>"; };
+		AFA94D0E283441BE00314031 /* ChooseDifficultyStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDifficultyStrategy.swift; sourceTree = "<group>"; };
+		AFA94D102834439E00314031 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		AFCD7376282EA45900BB56B9 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCD7379282EA45900BB56B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 				AF1C39D0283185BB0055B9F1 /* Game.swift */,
 				AF1C39CE283184320055B9F1 /* GameSession.swift */,
 				AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */,
+				AFA94D102834439E00314031 /* Difficulty.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 				AF1C39D82831BBC20055B9F1 /* ViewControllers */,
 				AFCD7382282EA45B00BB56B9 /* Assets.xcassets */,
 				AFCD7387282EA45B00BB56B9 /* Info.plist */,
+				AFA94D0E283441BE00314031 /* ChooseDifficultyStrategy.swift */,
 			);
 			path = WhoWantsToBeAMillionaire;
 			sourceTree = "<group>";
@@ -204,8 +210,10 @@
 				AF1C39D3283186280055B9F1 /* RecordsCaretaker.swift in Sources */,
 				AF1C39C9282FBEB60055B9F1 /* GameScene.swift in Sources */,
 				AFCD737E282EA45900BB56B9 /* MainMenu.swift in Sources */,
+				AFA94D112834439E00314031 /* Difficulty.swift in Sources */,
 				AF1C39C7282FB6020055B9F1 /* Questions.swift in Sources */,
 				AF1C39CF283184320055B9F1 /* GameSession.swift in Sources */,
+				AFA94D0F283441BE00314031 /* ChooseDifficultyStrategy.swift in Sources */,
 				AFCD737A282EA45900BB56B9 /* AppDelegate.swift in Sources */,
 				AFCD737C282EA45900BB56B9 /* SceneDelegate.swift in Sources */,
 				AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */,

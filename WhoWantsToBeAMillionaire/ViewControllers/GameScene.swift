@@ -7,12 +7,23 @@
 import UIKit
 
 protocol GameSceneDelegate: AnyObject {
-    func didEndGame(withScore score: Int, name: String, removeTwoUsed: Bool, callFriendUsed: Bool, audienceHelpUsed: Bool)
+    func didEndGame(difficulty: Difficulty, withScore score: Int, name: String, removeTwoUsed: Bool, callFriendUsed: Bool, audienceHelpUsed: Bool)
 }
 
 final class GameScene: UIViewController {
     
     weak var delegate: GameSceneDelegate?
+    
+    private var chooseDifficultyStrategy: ChooseDiffilultyStrategy {
+        switch difficulty {
+        case .easy:
+            return EasyModeStrategy()
+        case .hard:
+            return HardModeStrategy()
+        case .insane:
+            return InsaneModeStrategy()
+        }
+    }
     
     @IBOutlet var question: UILabel!
     @IBOutlet var progressIndicator: UIImageView!
@@ -58,9 +69,11 @@ final class GameScene: UIViewController {
         }
     }
     
-    let scoreValues = [0 : 0, 1 : 100, 2 : 200, 3 : 300, 4 : 500, 5 : 1000, 6 : 2000, 7 : 4000, 8 : 8000, 9 : 16000, 10 : 32000, 11 : 64000, 12 : 125000, 13 : 250000, 14 : 500000, 15 : 1000000]
+    private let scoreValues = [0 : 0, 1 : 100, 2 : 200, 3 : 300, 4 : 500, 5 : 1000, 6 : 2000, 7 : 4000, 8 : 8000, 9 : 16000, 10 : 32000, 11 : 64000, 12 : 125000, 13 : 250000, 14 : 500000, 15 : 1000000]
     var playerName: String = ""
+    private var questions = [Question]()
     var gameSession = GameSession()
+    var difficulty: Difficulty = .hard
     
     var initialProgressIndicatorPosition = CGFloat()
     var score = 0
@@ -89,14 +102,15 @@ final class GameScene: UIViewController {
         answerButtonsCollection = [answerA, answerB, answerC, answerD]
         answerButtonsCollection.forEach { $0.titleLabel?.textAlignment = .center }
         lifelineButtonsCollection = [removeTwoLifeline, callFriendLifeline, audienceHelpLifeline, takeCashLifeline]
+        questions = chooseDifficultyStrategy.setupGame(lifelineButtons: lifelineButtonsCollection)
         setupQuestion()
     }
     
     func setupQuestion(action: UIAlertAction! = nil) {
         title = "Question #\(questionNumber + 1)"
-        answerButtonsCollection.forEach { $0.isHidden = false }
+        answerButtonsCollection.forEach { $0.isEnabled = true }
         if questionNumber > 0 { moveProgressIndicator() }
-        let currentQuestion = questionsSet[questionNumber]
+        let currentQuestion = questions[questionNumber]
         question.text = currentQuestion.question
         answerA.setTitle("A) " + currentQuestion.answers[0], for: .normal)
         answerB.setTitle("B) " + currentQuestion.answers[1], for: .normal)
@@ -134,7 +148,7 @@ final class GameScene: UIViewController {
         if questionNumber == 15 { ac.addAction(UIAlertAction(title: "New Game", style: .default, handler: restartGame)) }
         ac.addAction(UIAlertAction(title: "Exit", style: .default, handler: exitToMainMenu))
         present(ac, animated: true)
-        delegate?.didEndGame(withScore: score, name: playerName, removeTwoUsed: gameSession.removeTwoUsed, callFriendUsed: gameSession.callFriendUsed, audienceHelpUsed: gameSession.audienceHelpUsed)
+        delegate?.didEndGame(difficulty: difficulty, withScore: score, name: playerName, removeTwoUsed: gameSession.removeTwoUsed, callFriendUsed: gameSession.callFriendUsed, audienceHelpUsed: gameSession.audienceHelpUsed)
     }
     
     func gameLost() {
@@ -152,12 +166,12 @@ final class GameScene: UIViewController {
         ac.addAction(UIAlertAction(title: "New game", style: .default, handler: restartGame))
         ac.addAction(UIAlertAction(title: "Exit", style: .default, handler: exitToMainMenu))
         present(ac, animated: true)
-        delegate?.didEndGame(withScore: score, name: playerName, removeTwoUsed: gameSession.removeTwoUsed, callFriendUsed: gameSession.callFriendUsed, audienceHelpUsed: gameSession.audienceHelpUsed)
+        delegate?.didEndGame(difficulty: difficulty, withScore: score, name: playerName, removeTwoUsed: gameSession.removeTwoUsed, callFriendUsed: gameSession.callFriendUsed, audienceHelpUsed: gameSession.audienceHelpUsed)
     }
     
     func restartGame(action: UIAlertAction! = nil) {
         questionNumber = 0
-        lifelineButtonsCollection.forEach { $0.isEnabled = true }
+        questions = chooseDifficultyStrategy.setupGame(lifelineButtons: lifelineButtonsCollection)
         gameSession.removeTwoUsed = false
         gameSession.callFriendUsed = false
         gameSession.audienceHelpUsed = false
@@ -182,7 +196,7 @@ final class GameScene: UIViewController {
         let doNotRemoveIndex = Int.random(in: 0...2)
         wrongAnswers = [wrongAnswers[doNotRemoveIndex]]
         buttons.remove(at: doNotRemoveIndex)
-        buttons.forEach({ $0.isHidden = true })
+        buttons.forEach({ $0.isEnabled = false })
     }
     
     func callFriend() {

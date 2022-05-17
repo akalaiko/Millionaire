@@ -63,7 +63,7 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
                                 </buttonConfiguration>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" toolTip="hard" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IWe-o1-UIA">
+                            <segmentedControl toolTip="hard" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IWe-o1-UIA">
                                 <rect key="frame" x="93.666666666666671" y="455.66666666666669" width="187.66666666666663" height="32"/>
                                 <segments>
                                     <segment title="Easy"/>
@@ -390,6 +390,9 @@
                                     <segment title="Insane"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemBlueColor"/>
+                                <connections>
+                                    <action selector="difficultyChosen:" destination="7sB-4y-owi" eventType="valueChanged" id="cdL-tG-3mK"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YG5-03-J4o"/>
