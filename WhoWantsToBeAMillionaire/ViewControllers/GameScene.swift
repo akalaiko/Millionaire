@@ -7,7 +7,7 @@
 import UIKit
 
 protocol GameSceneDelegate: AnyObject {
-    func didEndGame(withScore score: Int)
+    func didEndGame(withScore score: Int, name: String, removeTwoUsed: Bool, callFriendUsed: Bool, audienceHelpUsed: Bool)
 }
 
 final class GameScene: UIViewController {
@@ -59,6 +59,7 @@ final class GameScene: UIViewController {
     }
     
     let scoreValues = [0 : 0, 1 : 100, 2 : 200, 3 : 300, 4 : 500, 5 : 1000, 6 : 2000, 7 : 4000, 8 : 8000, 9 : 16000, 10 : 32000, 11 : 64000, 12 : 125000, 13 : 250000, 14 : 500000, 15 : 1000000]
+    var playerName: String = ""
     var gameSession = GameSession()
     
     var initialProgressIndicatorPosition = CGFloat()
@@ -133,7 +134,7 @@ final class GameScene: UIViewController {
         if questionNumber == 15 { ac.addAction(UIAlertAction(title: "New Game", style: .default, handler: restartGame)) }
         ac.addAction(UIAlertAction(title: "Exit", style: .default, handler: exitToMainMenu))
         present(ac, animated: true)
-        delegate?.didEndGame(withScore: score)
+        delegate?.didEndGame(withScore: score, name: playerName, removeTwoUsed: gameSession.removeTwoUsed, callFriendUsed: gameSession.callFriendUsed, audienceHelpUsed: gameSession.audienceHelpUsed)
     }
     
     func gameLost() {
@@ -151,7 +152,7 @@ final class GameScene: UIViewController {
         ac.addAction(UIAlertAction(title: "New game", style: .default, handler: restartGame))
         ac.addAction(UIAlertAction(title: "Exit", style: .default, handler: exitToMainMenu))
         present(ac, animated: true)
-        delegate?.didEndGame(withScore: score)
+        delegate?.didEndGame(withScore: score, name: playerName, removeTwoUsed: gameSession.removeTwoUsed, callFriendUsed: gameSession.callFriendUsed, audienceHelpUsed: gameSession.audienceHelpUsed)
     }
     
     func restartGame(action: UIAlertAction! = nil) {
@@ -176,10 +177,11 @@ final class GameScene: UIViewController {
     func removeTwo() {
         removeTwoLifeline.isEnabled = false
         gameSession.removeTwoUsed = true
-        
         var buttons = answerButtonsCollection
         buttons.remove(at: rightAnswer - 1)
-        buttons.remove(at: Int.random(in: 0...buttons.count - 1))
+        let doNotRemoveIndex = Int.random(in: 0...2)
+        wrongAnswers = [wrongAnswers[doNotRemoveIndex]]
+        buttons.remove(at: doNotRemoveIndex)
         buttons.forEach({ $0.isHidden = true })
     }
     

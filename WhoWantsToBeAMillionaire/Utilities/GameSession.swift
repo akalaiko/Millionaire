@@ -9,6 +9,7 @@ import Foundation
 
 class GameSession {
     var questionNumber: Int = 0
+    var playerName: String = ""
     var removeTwoUsed = false
     var callFriendUsed = false
     var audienceHelpUsed = false

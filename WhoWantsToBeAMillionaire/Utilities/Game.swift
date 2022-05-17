@@ -29,13 +29,17 @@ class Game {
 }
 
 extension Game: GameSceneDelegate {
-    func didEndGame(withScore score: Int) {
-        let newRecord = Record(score: score, date: Date())
+    func didEndGame(withScore score: Int, name: String, removeTwoUsed: Bool, callFriendUsed: Bool, audienceHelpUsed: Bool) {
+        let newRecord = Record(name: name, date: Date(), score: score, removeTwoUsed: removeTwoUsed, callFriendUsed: callFriendUsed, audienceHelpUsed: audienceHelpUsed)
         Game.shared.addRecord(record: newRecord)
     }
 }
 
 struct Record: Codable {
-    let score: Int
+    let name: String
     let date: Date
+    let score: Int
+    var removeTwoUsed: Bool
+    var callFriendUsed: Bool
+    var audienceHelpUsed: Bool
 }
