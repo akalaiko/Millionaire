@@ -34,13 +34,13 @@ final class GameScene: UIViewController {
     @IBOutlet var answerB: UIButton!
     @IBOutlet var answerC: UIButton!
     @IBOutlet var answerD: UIButton!
-    private var answerButtonsCollection = [UIButton]()
+    private var answerButtonsCollection: [UIButton] { [answerA, answerB, answerC, answerD] }
     
     @IBOutlet var removeTwoLifeline: UIButton!
     @IBOutlet var callFriendLifeline: UIButton!
     @IBOutlet var audienceHelpLifeline: UIButton!
     @IBOutlet var takeCashLifeline: UIButton!
-    private var lifelineButtonsCollection = [UIButton]()
+    private var lifelineButtonsCollection: [UIButton] { [removeTwoLifeline, callFriendLifeline, audienceHelpLifeline, takeCashLifeline] }
     
     @IBAction func exitToMainMenuButton() {
         takeCash()
@@ -53,16 +53,11 @@ final class GameScene: UIViewController {
     
     @IBAction func lifelinePressed(sender: UIButton!) {
         switch sender {
-        case removeTwoLifeline:
-            removeTwo()
-        case callFriendLifeline:
-            callFriend()
-        case audienceHelpLifeline:
-            audienceHelp()
-        case takeCashLifeline:
-            takeCash()
-        default:
-            break
+        case removeTwoLifeline: removeTwo()
+        case callFriendLifeline: callFriend()
+        case audienceHelpLifeline: audienceHelp()
+        case takeCashLifeline: takeCash()
+        default: break
         }
     }
     
@@ -78,13 +73,7 @@ final class GameScene: UIViewController {
     
     var initialProgressIndicatorPosition = CGFloat()
     var score = 0
-    var questionNumber = Observable<Int>(0) {
-        didSet {
-            gameSession.questionNumber = questionNumber.value
-            guard let score = scoreValues[questionNumber.value] else { return }
-            self.score = score
-        }
-    }
+    var questionNumber = Observable<Int>(0)
     var rightAnswer = Int() {
         didSet {
             wrongAnswers = [1,2,3,4].filter({ $0 != rightAnswer })
@@ -96,16 +85,17 @@ final class GameScene: UIViewController {
         super.viewDidLoad()
         initialSetup()
         questionNumber.addObserver(self, options: [.new, .initial], closure: { [weak self] (number, _) in
-            self?.title = "Question #\(number + 1)"
+            if number < 15 { self?.title = "Question #\(number + 1)" }
+            self?.gameSession.questionNumber = number
+            guard let score = self?.scoreValues[number] else { return }
+            self?.score = score
         })
     }
     
     func initialSetup() {
         delegate = Game.shared
         Game.shared.gameSession = gameSession
-        answerButtonsCollection = [answerA, answerB, answerC, answerD]
         answerButtonsCollection.forEach { $0.titleLabel?.textAlignment = .center }
-        lifelineButtonsCollection = [removeTwoLifeline, callFriendLifeline, audienceHelpLifeline, takeCashLifeline]
         questions = chooseDifficultyStrategy.setupGame(lifelineButtons: lifelineButtonsCollection)
         setupQuestion()
     }
@@ -169,7 +159,7 @@ final class GameScene: UIViewController {
     }
     
     func restartGame(action: UIAlertAction! = nil) {
-        questionNumber = Observable<Int>(0)
+        questionNumber.value = 0
         questions = chooseDifficultyStrategy.setupGame(lifelineButtons: lifelineButtonsCollection)
         gameSession.removeTwoUsed = false
         gameSession.callFriendUsed = false
@@ -207,30 +197,22 @@ final class GameScene: UIViewController {
         var isSure = false
         switch mysteryNumber {
         case 1, 2, 3, 5, 7, 8, 9:
-            friendsAnswer = rightAnswer
             isSure = true
+            friendsAnswer = rightAnswer
         case 4, 6:
-            if let wrongAnswer = wrongAnswers.randomElement() {
-                friendsAnswer = wrongAnswer
-                isSure = false
-            }
+            isSure = false
+            if let wrongAnswer = wrongAnswers.randomElement() { friendsAnswer = wrongAnswer }
         default:
             friendsAnswer = 0
         }
-        var message = ""
-        switch friendsAnswer {
-        case 0:
-            message = "Sorry, I have no idea. \n If you don't know the answer - listen to your heart."
-        case 1:
-            message = isSure ? "I'm almost sure the answer is A." : "I'm not sure at all, but I think the answer is A."
-        case 2:
-            message = isSure ? "The answer is B. Facts!" : "I'm not sure, but I guess the answer is B."
-        case 3:
-            message = isSure ? "I'm pretty sure the answer is С." : "I'm not sure, but C looks right to me."
-        case 4:
-            message = isSure ? "The answer is D. 100%" : "I'm not sure, but the answer might be D."
-        default:
-            break
+        var message: String {
+            switch friendsAnswer {
+            case 1: return isSure ? "I'm almost sure the answer is A." : "I'm not sure at all, but I think the answer is A."
+            case 2: return isSure ? "The answer is B. Facts!" : "I'm not sure, but I guess the answer is B."
+            case 3: return isSure ? "I'm pretty sure the answer is С." : "I'm not sure, but C looks right to me."
+            case 4: return isSure ? "The answer is D. 100%" : "I'm not sure, but the answer might be D."
+            default: return "Sorry, I have no idea. \n If you don't know the answer - listen to your heart."
+            }
         }
         let ac = UIAlertController(title: "Hey, buddy!", message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Got It!", style: .default, handler: nil))

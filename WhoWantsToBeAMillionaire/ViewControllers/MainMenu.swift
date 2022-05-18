@@ -15,11 +15,19 @@ class MainMenu: UIViewController {
             difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         }
     }
-    let alertController = UIAlertController(title: "Enter your name:", message: nil, preferredStyle: .alert)
     
     @IBAction func playButtonPressed(_ sender: UIButton) {
         present(alertController, animated: true)
-        alertController.removeFromParent()
+    }
+    
+    private var alertController: UIAlertController {
+        let alert = UIAlertController(title: "Enter your name:", message: nil, preferredStyle: .alert)
+        let enterNameAction = UIAlertAction(title: "Play", style: .default, handler: setName)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addTextField { (textField) in textField.placeholder = "Player" }
+        alert.addAction(enterNameAction)
+        alert.addAction(cancelAction)
+        return alert
     }
     
     private let recordsCaretaker = RecordsCaretaker()
@@ -27,49 +35,35 @@ class MainMenu: UIViewController {
     
     private var selectedDifficulty: Difficulty {
         switch self.difficultyControl.selectedSegmentIndex {
-        case 0:
-            return .easy
-        case 1:
-            return .hard
-        case 2:
-            return .insane
-        default:
-            return .hard
+        case 0: return .easy
+        case 1: return .hard
+        case 2: return .insane
+        default: return .hard
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         Game.shared.records = recordsCaretaker.receiveRecords()
-        
-        let enterNameAction = UIAlertAction(title: "Play", style: .default, handler: setName)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertController.addTextField { textField in textField.placeholder = "Player" }
-        alertController.addAction(enterNameAction)
-        alertController.addAction(cancelAction)
-        
     }
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == "startGameSegue" { return name != "" }
-        return true
+        switch identifier {
+        case "startGameSegue" : return name != ""
+        default: return true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        case "startGameSegue":
-            guard let destination = segue.destination as? GameScene else {
-                return
-            }
+        if segue.identifier == "startGameSegue" {
+            guard let destination = segue.destination as? GameScene else { return }
             destination.playerName = name
             destination.difficulty = selectedDifficulty
-            
-        default:
-            break
         }
     }
     
     func setName(action: UIAlertAction! = nil) {
-        if let textField = alertController.textFields?[0] {
+        if let textField = self.alertController.textFields?.first {
             if let text = textField.text {
                 name = (text != "") ? text : textField.placeholder ?? "Empty"
             }
@@ -77,6 +71,5 @@ class MainMenu: UIViewController {
         performSegue(withIdentifier: "startGameSegue", sender: nil)
         name = ""
     }
-
 }
 

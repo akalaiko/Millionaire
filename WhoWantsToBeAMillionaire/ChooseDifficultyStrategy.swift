@@ -13,12 +13,14 @@ protocol ChooseDiffilultyStrategy {
 
 final class EasyModeStrategy: ChooseDiffilultyStrategy {
     func setupGame(lifelineButtons: [UIButton]) -> [Question] {
+        lifelineButtons.forEach({ $0.isEnabled = true })
         return questionsSetEasy
     }
 }
 
 final class HardModeStrategy: ChooseDiffilultyStrategy {
     func setupGame(lifelineButtons: [UIButton]) -> [Question] {
+        lifelineButtons.forEach({ $0.isEnabled = true })
         return questionsSet
     }
 }
