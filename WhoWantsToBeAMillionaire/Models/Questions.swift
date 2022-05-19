@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Question {
+struct Question: Codable {
     let difficulty: Difficulty
     let question: String
     let answers: [String]

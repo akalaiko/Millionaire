@@ -7,6 +7,8 @@
 
 import Foundation
 
-enum Difficulty: Codable {
-    case easy, hard, insane
+enum Difficulty: String, Codable {
+    case easy = "easy"
+    case hard = "hard"
+    case insane = "insane"
 }

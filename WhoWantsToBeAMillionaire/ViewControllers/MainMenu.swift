@@ -19,18 +19,10 @@ class MainMenu: UIViewController {
     @IBAction func playButtonPressed(_ sender: UIButton) {
         present(alertController, animated: true)
     }
-    
-    private var alertController: UIAlertController {
-        let alert = UIAlertController(title: "Enter your name:", message: nil, preferredStyle: .alert)
-        let enterNameAction = UIAlertAction(title: "Play", style: .default, handler: setName)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addTextField { (textField) in textField.placeholder = "Player" }
-        alert.addAction(enterNameAction)
-        alert.addAction(cancelAction)
-        return alert
-    }
-    
+
+    private var alertController = UIAlertController()
     private let recordsCaretaker = RecordsCaretaker()
+    private let userQuestionsCaretaker = UserQuestionsCaretaker()
     var name = ""
     
     private var selectedDifficulty: Difficulty {
@@ -45,6 +37,8 @@ class MainMenu: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Game.shared.records = recordsCaretaker.receiveRecords()
+        Game.shared.userQuestions = userQuestionsCaretaker.getDatabase()
+        setupAlertController()
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -62,8 +56,18 @@ class MainMenu: UIViewController {
         }
     }
     
-    func setName(action: UIAlertAction! = nil) {
-        if let textField = self.alertController.textFields?.first {
+    private func setupAlertController() {
+            let alert = UIAlertController(title: "Enter your name:", message: nil, preferredStyle: .alert)
+            let enterNameAction = UIAlertAction(title: "Play", style: .default, handler: setName.self)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addTextField { textField in textField.placeholder = "Player" }
+            alert.addAction(enterNameAction)
+            alert.addAction(cancelAction)
+            alertController = alert
+    }
+    
+    private func setName(action: UIAlertAction! = nil) {
+        if let textField = alertController.textFields?.first {
             if let text = textField.text {
                 name = (text != "") ? text : textField.placeholder ?? "Empty"
             }

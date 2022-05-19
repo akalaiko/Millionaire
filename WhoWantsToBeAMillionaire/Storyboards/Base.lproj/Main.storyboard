@@ -10,6 +10,142 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Add question-->
+        <scene sceneID="Dhs-Xh-PeI">
+            <objects>
+                <viewController title="Add question" id="1GF-vW-hcz" customClass="AddQuestionController" customModule="WhoWantsToBeAMillionaire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q7a-nf-0hI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hQC-L2-qDC">
+                                <rect key="frame" x="20" y="88" width="335" height="586.33333333333337"/>
+                                <color key="backgroundColor" red="0.043137259779999999" green="0.054901964960000001" blue="0.098039209840000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="separatorColor" systemColor="systemBlueColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddQuestionCell" id="hgh-ts-8CI">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="335" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hgh-ts-8CI" id="pC0-23-f88">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.043137259779999999" green="0.054901964960000001" blue="0.098039209840000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nds-cB-BQU">
+                                <rect key="frame" x="20" y="736" width="335" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nds-cB-BQU" secondAttribute="height" multiplier="8:1" id="NNM-k7-qC4"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Add questions to database"/>
+                                <connections>
+                                    <action selector="addQuestionsToDatabase:" destination="1GF-vW-hcz" eventType="touchUpInside" id="aa1-0Q-JCA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAK-qt-v52">
+                                <rect key="frame" x="20" y="684.33333333333337" width="335" height="41.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PAK-qt-v52" secondAttribute="height" multiplier="8:1" id="qaA-tv-xdL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Add one more question"/>
+                                <connections>
+                                    <action selector="addOneMoreQuestion:" destination="1GF-vW-hcz" eventType="touchUpInside" id="D7d-ce-DoT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="OFO-W3-l1G"/>
+                        <color key="backgroundColor" red="0.043137259779999999" green="0.054901964960000001" blue="0.098039209840000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="OFO-W3-l1G" firstAttribute="bottom" secondItem="nds-cB-BQU" secondAttribute="bottom" id="DGZ-e7-kj6"/>
+                            <constraint firstItem="hQC-L2-qDC" firstAttribute="leading" secondItem="OFO-W3-l1G" secondAttribute="leading" constant="20" id="FYy-wH-qFs"/>
+                            <constraint firstItem="hQC-L2-qDC" firstAttribute="bottom" secondItem="PAK-qt-v52" secondAttribute="top" priority="999" constant="-10" id="SDz-vb-q5P"/>
+                            <constraint firstItem="OFO-W3-l1G" firstAttribute="trailing" secondItem="hQC-L2-qDC" secondAttribute="trailing" constant="20" id="YE4-yF-hoK"/>
+                            <constraint firstItem="nds-cB-BQU" firstAttribute="top" secondItem="PAK-qt-v52" secondAttribute="bottom" constant="10" id="fJW-ip-d8H"/>
+                            <constraint firstItem="nds-cB-BQU" firstAttribute="width" secondItem="hQC-L2-qDC" secondAttribute="width" id="hDN-Io-Exi"/>
+                            <constraint firstItem="hQC-L2-qDC" firstAttribute="top" secondItem="OFO-W3-l1G" secondAttribute="top" id="ilG-4c-dpF"/>
+                            <constraint firstItem="PAK-qt-v52" firstAttribute="width" secondItem="hQC-L2-qDC" secondAttribute="width" id="u2Q-1o-UXF"/>
+                            <constraint firstItem="PAK-qt-v52" firstAttribute="centerX" secondItem="OFO-W3-l1G" secondAttribute="centerX" id="yDq-aH-k9a"/>
+                            <constraint firstItem="nds-cB-BQU" firstAttribute="centerX" secondItem="OFO-W3-l1G" secondAttribute="centerX" id="yjc-km-XmV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add question" id="SMr-nf-4nL">
+                        <barButtonItem key="rightBarButtonItem" title="Database" id="ouM-kr-WWc">
+                            <connections>
+                                <segue destination="vbi-6Z-CkC" kind="show" id="CkF-Fq-COj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="hQC-L2-qDC" id="Q6b-Wu-c2S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9AC-TQ-dtN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1711" y="-602"/>
+        </scene>
+        <!--User's questions database-->
+        <scene sceneID="py6-qC-OFL">
+            <objects>
+                <viewController id="vbi-6Z-CkC" customClass="UserQuestionsDatabaseController" customModule="WhoWantsToBeAMillionaire" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IHf-tt-khy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ztI-cu-okf">
+                                <rect key="frame" x="20" y="88" width="335" height="690"/>
+                                <color key="backgroundColor" red="0.043137259779999999" green="0.054901964960000001" blue="0.098039209840000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="separatorColor" systemColor="systemBlueColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userQuestionCell" textLabel="yPH-Qo-yFd" style="IBUITableViewCellStyleDefault" id="7PQ-mK-nZK">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="335" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7PQ-mK-nZK" id="neD-yr-The">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yPH-Qo-yFd">
+                                                    <rect key="frame" x="16" y="0.0" width="303" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.043137259779999999" green="0.054901964960000001" blue="0.098039209840000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1Cb-LQ-F0V"/>
+                        <color key="backgroundColor" red="0.043137259779999999" green="0.054901964960000001" blue="0.098039209840000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="1Cb-LQ-F0V" firstAttribute="bottom" secondItem="ztI-cu-okf" secondAttribute="bottom" id="IQJ-HP-8wL"/>
+                            <constraint firstItem="ztI-cu-okf" firstAttribute="top" secondItem="1Cb-LQ-F0V" secondAttribute="top" id="NDp-ul-1Vk"/>
+                            <constraint firstItem="ztI-cu-okf" firstAttribute="leading" secondItem="1Cb-LQ-F0V" secondAttribute="leading" constant="20" id="Vcj-g8-zxH"/>
+                            <constraint firstItem="1Cb-LQ-F0V" firstAttribute="trailing" secondItem="ztI-cu-okf" secondAttribute="trailing" constant="20" id="yfX-Zc-GHJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="User's questions database" leftItemsSupplementBackButton="YES" id="zdS-QG-bET">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="syQ-Ox-7QS"/>
+                        <barButtonItem key="rightBarButtonItem" title="Clear" image="trash.circle" catalog="system" id="NAb-xY-UEy">
+                            <connections>
+                                <action selector="clearButtonpressed:" destination="vbi-6Z-CkC" id="Ugo-xY-THE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="ztI-cu-okf" id="7mJ-bQ-gg0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZh-ef-EG1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2492" y="-602.21674876847294"/>
+        </scene>
         <!--Main Menu-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -62,6 +198,9 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Add question">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="17"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="1GF-vW-hcz" kind="show" id="hrp-Oi-mfO"/>
+                                </connections>
                             </button>
                             <segmentedControl toolTip="hard" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IWe-o1-UIA">
                                 <rect key="frame" x="93.666666666666671" y="455.66666666666669" width="187.66666666666663" height="32"/>

@@ -10,12 +10,20 @@ import Foundation
 class Game {
     static let shared = Game()
     private let recordsCaretaker = RecordsCaretaker()
+    private let userQuestionsCaretaker = UserQuestionsCaretaker()
     var gameSession: GameSession?
     private init() { }
     
     var records = [Record]() {
         didSet {
             recordsCaretaker.save(records: records)
+        }
+    }
+    
+    var userQuestions = [Question]() {
+        didSet {
+            userQuestionsCaretaker.save(questions: userQuestions)
+            print(userQuestions)
         }
     }
     
@@ -26,6 +34,14 @@ class Game {
     func clearRecords() {
         records = []
     }
+    
+    func addQuestions(questions: [Question]) {
+        self.userQuestions.append(contentsOf: questions)
+    }
+    
+    func clearUserQuestions() {
+        userQuestions = []
+    }
 }
 
 extension Game: GameSceneDelegate {
@@ -35,12 +51,10 @@ extension Game: GameSceneDelegate {
     }
 }
 
-struct Record: Codable {
-    let difficulty: Difficulty
-    let name: String
-    let date: Date
-    let score: Int
-    let removeTwoUsed: Bool
-    let callFriendUsed: Bool
-    let audienceHelpUsed: Bool
+extension Game: AddQuestionControllerDelegate {
+    func didTapAddQuestions(questions: [Question]) {
+        Game.shared.addQuestions(questions: questions)
+    }
 }
+
+

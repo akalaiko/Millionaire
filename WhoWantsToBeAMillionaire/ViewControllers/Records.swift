@@ -21,8 +21,10 @@ final class Records: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func clearButtonPressed(_ sender: UIBarButtonItem) {
-        Game.shared.clearRecords()
-        self.tableView.reloadData()
+        let ac = UIAlertController(title: "Are you sure?", message: "All your records will be deleted.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: clearRecords))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
     }
     
     private let dateFormater: DateFormatter = {
@@ -97,7 +99,7 @@ final class Records: UIViewController, UITableViewDelegate, UITableViewDataSourc
             setupLabel(label: lifelinesLabel, textAlignment: .center, color: .white, fontSize: 14)
             addSubviews(to: lifelinesUsedView, add: [lifelinesLabel])
         case 1:
-            let lifelineIcon = UIImageView(frame: CGRect(x: width - iconSize / 2, y: iconSize / 2, width: iconSize, height: iconSize))
+            let lifelineIcon = UIImageView(frame: CGRect(x: width / 2 - iconSize / 2, y: iconSize / 2, width: iconSize, height: iconSize))
             if record.removeTwoUsed { lifelineIcon.image = UIImage(named: "5050") }
             if record.callFriendUsed { lifelineIcon.image = UIImage(named: "call") }
             if record.audienceHelpUsed { lifelineIcon.image = UIImage(named: "audience") }
@@ -166,5 +168,11 @@ final class Records: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.sectionHeaderTopPadding = 0
         
         return header
+    }
+    
+    func clearRecords(action: UIAlertAction! = nil) {
+        Game.shared.clearRecords()
+        self.tableView.reloadData()
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -40,7 +40,7 @@ final class GameScene: UIViewController {
     @IBOutlet var callFriendLifeline: UIButton!
     @IBOutlet var audienceHelpLifeline: UIButton!
     @IBOutlet var takeCashLifeline: UIButton!
-    private var lifelineButtonsCollection: [UIButton] { [removeTwoLifeline, callFriendLifeline, audienceHelpLifeline, takeCashLifeline] }
+    private var lifelineButtonsCollection: [UIButton] { [removeTwoLifeline, callFriendLifeline, audienceHelpLifeline] }
     
     @IBAction func exitToMainMenuButton() {
         takeCash()
