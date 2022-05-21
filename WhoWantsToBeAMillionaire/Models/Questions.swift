@@ -48,5 +48,5 @@ private let question29 = Question(difficulty: .easy, question: "What do you use 
 private let question30 = Question(difficulty: .easy, question: "If you freeze water, what do you get?", answers: ["Ice", "Fire", "You can’t freeze water", "Liquid nitrogen"], rightAnswer: 1)
 
 
-let questionsSet: [Question] = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15]
-let questionsSetEasy: [Question] = [question16, question17, question18, question19, question20, question21, question22, question23, question24, question25, question26, question27, question28, question29, question30]
+var questionsSet: [Question] = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15]
+var questionsSetEasy: [Question] = [question16, question17, question18, question19, question20, question21, question22, question23, question24, question25, question26, question27, question28, question29, question30]

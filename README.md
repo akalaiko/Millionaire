@@ -38,5 +38,7 @@
     All the records and user's questions database are stored locally in UserDefaults.standard
 ### 4. Strategy
     Difficulty options are implemented with Strategy pattern.
-### 5. Builder
-    Adding user's questions is implementer with Builder pattern
+### 5. Facade
+    Strategies are hidden from GameScene with Facade pattern.
+### 6. Builder
+    Adding user's questions is implemented with Builder pattern

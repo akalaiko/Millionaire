@@ -23,8 +23,9 @@
 		AFA94D1E28366AA200314031 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D1D28366AA200314031 /* ReusableView.swift */; };
 		AFA94D2028366F4000314031 /* UserQuestionsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D1F28366F4000314031 /* UserQuestionsCaretaker.swift */; };
 		AFA94D2228367F7700314031 /* QuestionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D2128367F7700314031 /* QuestionBuilder.swift */; };
-		AFA94D242836A4CC00314031 /* UserQuestionsDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D232836A4CC00314031 /* UserQuestionsDatabaseController.swift */; };
+		AFA94D242836A4CC00314031 /* UserQuestionsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D232836A4CC00314031 /* UserQuestionsDatabase.swift */; };
 		AFBC31532836F2E800CAC457 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC31522836F2E800CAC457 /* Record.swift */; };
+		AFBC3155283916B600CAC457 /* DifficultySettingsFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC3154283916B600CAC457 /* DifficultySettingsFacade.swift */; };
 		AFCD737A282EA45900BB56B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD7379282EA45900BB56B9 /* AppDelegate.swift */; };
 		AFCD737C282EA45900BB56B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */; };
 		AFCD737E282EA45900BB56B9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737D282EA45900BB56B9 /* MainMenu.swift */; };
@@ -50,8 +51,9 @@
 		AFA94D1D28366AA200314031 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		AFA94D1F28366F4000314031 /* UserQuestionsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionsCaretaker.swift; sourceTree = "<group>"; };
 		AFA94D2128367F7700314031 /* QuestionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBuilder.swift; sourceTree = "<group>"; };
-		AFA94D232836A4CC00314031 /* UserQuestionsDatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionsDatabaseController.swift; sourceTree = "<group>"; };
+		AFA94D232836A4CC00314031 /* UserQuestionsDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserQuestionsDatabase.swift; sourceTree = "<group>"; };
 		AFBC31522836F2E800CAC457 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		AFBC3154283916B600CAC457 /* DifficultySettingsFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySettingsFacade.swift; sourceTree = "<group>"; };
 		AFCD7376282EA45900BB56B9 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCD7379282EA45900BB56B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				AFA94D1F28366F4000314031 /* UserQuestionsCaretaker.swift */,
 				AFA94D12283464DA00314031 /* Observer.swift */,
 				AFA94D2128367F7700314031 /* QuestionBuilder.swift */,
+				AFBC3154283916B600CAC457 /* DifficultySettingsFacade.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -118,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				AFA94D19283667B700314031 /* AddQuestionController.swift */,
-				AFA94D232836A4CC00314031 /* UserQuestionsDatabaseController.swift */,
+				AFA94D232836A4CC00314031 /* UserQuestionsDatabase.swift */,
 				AFCD737D282EA45900BB56B9 /* MainMenu.swift */,
 				AF1C39CC283182660055B9F1 /* Records.swift */,
 				AF1C39C8282FBEB60055B9F1 /* GameScene.swift */,
@@ -174,6 +177,7 @@
 			children = (
 				AF1C39D42831BACD0055B9F1 /* Fundamentals */,
 				AFBC31512836F2AB00CAC457 /* Extensions */,
+				AFA94D252836D21500314031 /* Strategies */,
 				AF1C39D72831BB960055B9F1 /* Models */,
 				AFA94D18283653BD00314031 /* Reusable Views */,
 				AF1C39D62831BB430055B9F1 /* Utilities */,
@@ -181,7 +185,6 @@
 				AF1C39D82831BBC20055B9F1 /* ViewControllers */,
 				AFCD7382282EA45B00BB56B9 /* Assets.xcassets */,
 				AFCD7387282EA45B00BB56B9 /* Info.plist */,
-				AFA94D252836D21500314031 /* Strategies */,
 			);
 			path = WhoWantsToBeAMillionaire;
 			sourceTree = "<group>";
@@ -259,7 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF1C39CD283182660055B9F1 /* Records.swift in Sources */,
-				AFA94D242836A4CC00314031 /* UserQuestionsDatabaseController.swift in Sources */,
+				AFA94D242836A4CC00314031 /* UserQuestionsDatabase.swift in Sources */,
 				AFBC31532836F2E800CAC457 /* Record.swift in Sources */,
 				AFA94D13283464DA00314031 /* Observer.swift in Sources */,
 				AF1C39D3283186280055B9F1 /* RecordsCaretaker.swift in Sources */,
@@ -276,6 +279,7 @@
 				AFA94D1E28366AA200314031 /* ReusableView.swift in Sources */,
 				AFCD737C282EA45900BB56B9 /* SceneDelegate.swift in Sources */,
 				AFA94D1C283669F200314031 /* UITableView(register+dequeue).swift in Sources */,
+				AFBC3155283916B600CAC457 /* DifficultySettingsFacade.swift in Sources */,
 				AFA94D16283653B300314031 /* AddQuestionCell.swift in Sources */,
 				AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */,
 			);

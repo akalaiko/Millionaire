@@ -1,10 +1,9 @@
 //
-//  ReusableView.swift.swift
-//  MyHomeworkApp
+//  ReusableView.swift
+//  WhoWantsToBeAMillionaire
 //
-//  Created by Tim on 03.04.2022.
+//  Created by Tim on 14.05.2022.
 //
-
 import UIKit
 
 protocol ReusableView {

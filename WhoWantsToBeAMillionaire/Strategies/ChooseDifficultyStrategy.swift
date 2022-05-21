@@ -14,20 +14,20 @@ protocol ChooseDiffilultyStrategy {
 final class EasyModeStrategy: ChooseDiffilultyStrategy {
     func setupGame(lifelineButtons: [UIButton]) -> [Question] {
         lifelineButtons.forEach({ $0.isEnabled = true })
-        return questionsSetEasy
+        return questionsSetEasy.shuffled()
     }
 }
 
 final class HardModeStrategy: ChooseDiffilultyStrategy {
     func setupGame(lifelineButtons: [UIButton]) -> [Question] {
         lifelineButtons.forEach({ $0.isEnabled = true })
-        return questionsSet
+        return questionsSet.shuffled()
     }
 }
 
 final class InsaneModeStrategy: ChooseDiffilultyStrategy {
     func setupGame(lifelineButtons: [UIButton]) -> [Question] {
         lifelineButtons.forEach({ $0.isEnabled = false })
-        return questionsSet
+        return questionsSet.shuffled()
     }
 }

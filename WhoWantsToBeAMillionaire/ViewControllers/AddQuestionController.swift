@@ -5,6 +5,7 @@
 //  Created by Tim on 19.05.2022.
 //
 //AddQuestionCell
+
 import UIKit
 
 protocol AddQuestionControllerDelegate: AnyObject {
@@ -30,6 +31,14 @@ final class AddQuestionController: UIViewController, UITableViewDelegate, UITabl
             present(ac, animated: true)
         }
     }
+
+    @IBOutlet var tableView: UITableView!
+    
+    // MARK: - Properties
+     
+    weak var delegate: AddQuestionControllerDelegate?
+    
+    // MARK: - Private properties
     
     private var errorAlertController: UIAlertController {
         let alert = UIAlertController(title: "Error", message: "Please check if all the lines are filled", preferredStyle: .alert)
@@ -37,15 +46,11 @@ final class AddQuestionController: UIViewController, UITableViewDelegate, UITabl
         alert.addAction(cancelAction)
         return alert
     }
-    
     private let builder = QuestionBuilder()
-    
-    weak var delegate: AddQuestionControllerDelegate?
-    
-    @IBOutlet var tableView: UITableView!
-    
     private var numberOfQuestions = 1
-
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -54,6 +59,8 @@ final class AddQuestionController: UIViewController, UITableViewDelegate, UITabl
         tableView.register(AddQuestionCell.self)
     }
 
+    // MARK: - Table View Data Source
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { numberOfQuestions }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +69,9 @@ final class AddQuestionController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
 
-    func setupBuilder() -> Bool {
+    // MARK: - Private functions
+    
+    private func setupBuilder() -> Bool {
         for number in 0..<numberOfQuestions {
             let indexPath: IndexPath = [0, number]
             if let cell = tableView.cellForRow(at: indexPath) as? AddQuestionCell {
@@ -115,7 +124,7 @@ final class AddQuestionController: UIViewController, UITableViewDelegate, UITabl
         return true
     }
     
-    func exitToMainMenu(action: UIAlertAction! = nil) {
+    private func exitToMainMenu(action: UIAlertAction! = nil) {
         navigationController?.popViewController(animated: true)
     }
 }

@@ -90,7 +90,7 @@
         <!--User's questions database-->
         <scene sceneID="py6-qC-OFL">
             <objects>
-                <viewController id="vbi-6Z-CkC" customClass="UserQuestionsDatabaseController" customModule="WhoWantsToBeAMillionaire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vbi-6Z-CkC" customClass="UserQuestionsDatabase" customModule="WhoWantsToBeAMillionaire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IHf-tt-khy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,24 +8,35 @@
 import Foundation
 
 class Game {
-    static let shared = Game()
-    private let recordsCaretaker = RecordsCaretaker()
-    private let userQuestionsCaretaker = UserQuestionsCaretaker()
-    var gameSession: GameSession?
-    private init() { }
     
+    // MARK: - Singleton init
+    
+    static let shared = Game()
+    private init() {}
+    
+    // MARK: - Properties
+    
+    var gameSession: GameSession?
     var records = [Record]() {
         didSet {
             recordsCaretaker.save(records: records)
         }
     }
-    
     var userQuestions = [Question]() {
         didSet {
             userQuestionsCaretaker.save(questions: userQuestions)
+            questionsSetEasy.append(contentsOf: userQuestions.filter({ $0.difficulty == .easy }))
+            questionsSet.append(contentsOf: userQuestions.filter({ $0.difficulty == .hard }))
             print(userQuestions)
         }
     }
+    
+    // MARK: - Private properties
+    
+    private let recordsCaretaker = RecordsCaretaker()
+    private let userQuestionsCaretaker = UserQuestionsCaretaker()
+    
+    // MARK: - Functions
     
     func addRecord(record: Record ) {
         self.records.append(record)
@@ -43,6 +54,8 @@ class Game {
         userQuestions = []
     }
 }
+
+// MARK: - Extensions
 
 extension Game: GameSceneDelegate {
     func didEndGame(difficulty: Difficulty, withScore score: Int, name: String, removeTwoUsed: Bool, callFriendUsed: Bool, audienceHelpUsed: Bool) {

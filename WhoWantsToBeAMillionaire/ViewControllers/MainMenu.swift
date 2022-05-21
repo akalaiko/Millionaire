@@ -20,6 +20,8 @@ class MainMenu: UIViewController {
         present(alertController, animated: true)
     }
 
+    // MARK: - Private properties
+    
     private var alertController = UIAlertController()
     private let recordsCaretaker = RecordsCaretaker()
     private let userQuestionsCaretaker = UserQuestionsCaretaker()
@@ -34,6 +36,8 @@ class MainMenu: UIViewController {
         }
     }
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Game.shared.records = recordsCaretaker.receiveRecords()
@@ -55,6 +59,8 @@ class MainMenu: UIViewController {
             destination.difficulty = selectedDifficulty
         }
     }
+    
+    // MARK: - Private functions
     
     private func setupAlertController() {
             let alert = UIAlertController(title: "Enter your name:", message: nil, preferredStyle: .alert)
