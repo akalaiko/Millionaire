@@ -146,14 +146,13 @@
 			path = Strategies;
 			sourceTree = "<group>";
 		};
-		AFBC31512836F2AB00CAC457 /* Extensions */ = {
+		AFBC3156283933E200CAC457 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AFA94D1B283669F200314031 /* UITableView(register+dequeue).swift */,
 				AFA94D1D28366AA200314031 /* ReusableView.swift */,
+				AFA94D1B283669F200314031 /* UITableView(register+dequeue).swift */,
 			);
-			name = Extensions;
-			path = ..;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AFCD736D282EA45900BB56B9 = {
@@ -176,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				AF1C39D42831BACD0055B9F1 /* Fundamentals */,
-				AFBC31512836F2AB00CAC457 /* Extensions */,
+				AFBC3156283933E200CAC457 /* Extensions */,
 				AFA94D252836D21500314031 /* Strategies */,
 				AF1C39D72831BB960055B9F1 /* Models */,
 				AFA94D18283653BD00314031 /* Reusable Views */,
