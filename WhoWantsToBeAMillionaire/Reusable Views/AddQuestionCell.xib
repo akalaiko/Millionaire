@@ -94,12 +94,13 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                     </textField>
                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6RM-Q2-ayl">
-                        <rect key="frame" x="20" y="331.5" width="140" height="24.5"/>
+                        <rect key="frame" x="20" y="331.5" width="280" height="24.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="6RM-Q2-ayl" secondAttribute="height" multiplier="6:1" id="qHt-sH-lqE"/>
+                            <constraint firstAttribute="width" secondItem="6RM-Q2-ayl" secondAttribute="height" multiplier="12:1" id="qHt-sH-lqE"/>
                         </constraints>
                         <segments>
                             <segment title="Easy"/>
+                            <segment title="Medium"/>
                             <segment title="Hard"/>
                         </segments>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,7 +134,7 @@
                     <constraint firstItem="f02-Kt-1mZ" firstAttribute="top" secondItem="Tvf-RN-i0P" secondAttribute="bottom" constant="5" id="1pQ-Yi-ss9"/>
                     <constraint firstItem="BYB-jc-d1P" firstAttribute="top" secondItem="Oom-2r-Sse" secondAttribute="bottom" constant="5" id="7cC-bM-J4g"/>
                     <constraint firstItem="jvR-ES-b8S" firstAttribute="leading" secondItem="6RM-Q2-ayl" secondAttribute="leading" id="9ch-ev-3B6"/>
-                    <constraint firstItem="6RM-Q2-ayl" firstAttribute="width" secondItem="hGH-Qc-CrU" secondAttribute="width" multiplier="1:2" id="Chv-IZ-7aA"/>
+                    <constraint firstItem="6RM-Q2-ayl" firstAttribute="width" secondItem="hGH-Qc-CrU" secondAttribute="width" id="Chv-IZ-7aA"/>
                     <constraint firstItem="3QG-08-xR3" firstAttribute="top" secondItem="sxU-nB-JXB" secondAttribute="bottom" constant="5" id="DCa-SP-5JC"/>
                     <constraint firstItem="Tvf-RN-i0P" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="DJg-PA-g1A"/>
                     <constraint firstItem="jvR-ES-b8S" firstAttribute="top" secondItem="hGH-Qc-CrU" secondAttribute="bottom" constant="5" id="Ea9-u4-lbP"/>

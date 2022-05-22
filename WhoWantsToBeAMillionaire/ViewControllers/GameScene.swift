@@ -94,7 +94,7 @@ final class GameScene: UIViewController {
             self?.score = score
         })
         answerButtonsCollection.forEach { $0.titleLabel?.textAlignment = .center }
-        questions = difficultySettingsFacade.setupGame(lifelineButtons: lifelineButtonsCollection)
+        questions = difficultySettingsFacade.setupGame()
         setupQuestion()
     }
     
@@ -107,7 +107,7 @@ final class GameScene: UIViewController {
         answerB.setTitle("B) " + currentQuestion.answers[1], for: .normal)
         answerC.setTitle("C) " + currentQuestion.answers[2], for: .normal)
         answerD.setTitle("D) " + currentQuestion.answers[3], for: .normal)
-        rightAnswer = currentQuestion.rightAnswer
+        rightAnswer = currentQuestion.correctAnswerNumber
     }
     
     private func moveProgressIndicator() {
@@ -158,7 +158,8 @@ final class GameScene: UIViewController {
     
     private func restartGame(action: UIAlertAction! = nil) {
         questionNumber.value = 0
-        questions = difficultySettingsFacade.setupGame(lifelineButtons: lifelineButtonsCollection)
+        questions = difficultySettingsFacade.setupGame()
+        lifelineButtonsCollection.forEach { $0.isEnabled = true }
         gameSession.removeTwoUsed = false
         gameSession.callFriendUsed = false
         gameSession.audienceHelpUsed = false

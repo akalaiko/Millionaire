@@ -15,8 +15,8 @@ final class DifficultySettingsFacade {
     private var chooseDifficultyStrategy: ChooseDiffilultyStrategy {
         switch difficulty {
         case .easy: return EasyModeStrategy()
+        case .medium: return MediumModeStrategy()
         case .hard: return HardModeStrategy()
-        case .insane: return InsaneModeStrategy()
         }
     }
     
@@ -28,7 +28,7 @@ final class DifficultySettingsFacade {
     
     // MARK: - Functions
     
-    func setupGame(lifelineButtons: [UIButton]) -> [Question] {
-        return chooseDifficultyStrategy.setupGame(lifelineButtons: lifelineButtons)
+    func setupGame() -> [Question] {
+        return chooseDifficultyStrategy.setupGame()
     }
 }

@@ -116,7 +116,8 @@ final class AddQuestionController: UIViewController, UITableViewDelegate, UITabl
                 builder.setRightAnswer(cell.rightAnswerSelector.selectedSegmentIndex + 1, number: indexPath.row)
                 switch cell.difficultySelector.selectedSegmentIndex {
                 case 0: builder.setDifficulty(.easy, number: indexPath.row)
-                case 1: builder.setDifficulty(.hard, number: indexPath.row)
+                case 1: builder.setDifficulty(.medium, number: indexPath.row)
+                case 2: builder.setDifficulty(.hard, number: indexPath.row)
                 default: builder.setDifficulty(.easy, number: indexPath.row)
                 }
             }

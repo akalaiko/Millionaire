@@ -21,7 +21,7 @@ final class QuestionBuilder {
     
     func build(questionNumbers: Int) -> [Question] {
         for number in 0..<questionNumbers {
-            questions.append(Question(difficulty: difficulty[number], question: question[number], answers: answers[number], rightAnswer: rightAnswer[number]))
+            questions.append(Question(difficulty: difficulty[number], question: question[number], answers: answers[number], correctAnswerNumber: rightAnswer[number]))
         }
         return questions
     }

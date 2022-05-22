@@ -30,9 +30,9 @@ class MainMenu: UIViewController {
     private var selectedDifficulty: Difficulty {
         switch self.difficultyControl.selectedSegmentIndex {
         case 0: return .easy
-        case 1: return .hard
-        case 2: return .insane
-        default: return .hard
+        case 1: return .medium
+        case 2: return .hard
+        default: return .easy
         }
     }
 

@@ -25,8 +25,8 @@ class Game {
     var userQuestions = [Question]() {
         didSet {
             userQuestionsCaretaker.save(questions: userQuestions)
-            questionsSetEasy.append(contentsOf: userQuestions.filter({ $0.difficulty == .easy }))
-            questionsSet.append(contentsOf: userQuestions.filter({ $0.difficulty == .hard }))
+//            questionsSetEasy.append(contentsOf: userQuestions.filter({ $0.difficulty == .easy }))
+//            questionsSet.append(contentsOf: userQuestions.filter({ $0.difficulty == .hard }))
             print(userQuestions)
         }
     }

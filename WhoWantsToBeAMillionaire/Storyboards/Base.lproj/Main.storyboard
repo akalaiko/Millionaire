@@ -206,8 +206,8 @@
                                 <rect key="frame" x="93.666666666666671" y="455.66666666666669" width="187.66666666666663" height="32"/>
                                 <segments>
                                     <segment title="Easy"/>
+                                    <segment title="Medium"/>
                                     <segment title="Hard"/>
-                                    <segment title="Insane"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemBlueColor"/>
                             </segmentedControl>
@@ -525,8 +525,8 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="32"/>
                                 <segments>
                                     <segment title="Easy"/>
+                                    <segment title="Medium"/>
                                     <segment title="Hard"/>
-                                    <segment title="Insane"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemBlueColor"/>
                                 <connections>

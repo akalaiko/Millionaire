@@ -37,16 +37,16 @@ final class Records: UIViewController, UITableViewDelegate, UITableViewDataSourc
     private var selectedDifficulty: Difficulty {
         switch self.difficultyControl.selectedSegmentIndex {
         case 0: return .easy
-        case 1: return .hard
-        case 2: return .insane
+        case 1: return .medium
+        case 2: return .hard
         default: return .easy
         }
     }
     private var recordsList: [Record] {
         switch selectedDifficulty {
         case .easy: return Game.shared.records.filter { $0.difficulty == .easy }
+        case .medium: return Game.shared.records.filter { $0.difficulty == .medium }
         case .hard: return Game.shared.records.filter { $0.difficulty == .hard }
-        case .insane: return Game.shared.records.filter { $0.difficulty == .insane }
         }
     }
     private var standartWidth: CGFloat { tableView.bounds.width }

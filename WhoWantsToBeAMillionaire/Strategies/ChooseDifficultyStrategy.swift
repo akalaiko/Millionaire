@@ -8,26 +8,40 @@
 import UIKit
 
 protocol ChooseDiffilultyStrategy {
-    func setupGame(lifelineButtons: [UIButton]) -> [Question]
+    var networkService: NetworkService { get }
+    var questionSet: [Question] { get set }
+    func setupGame() -> [Question]
 }
 
 final class EasyModeStrategy: ChooseDiffilultyStrategy {
-    func setupGame(lifelineButtons: [UIButton]) -> [Question] {
-        lifelineButtons.forEach({ $0.isEnabled = true })
-        return questionsSetEasy.shuffled()
+    var networkService: NetworkService = NetworkService.instance
+    var questionSet: [Question] = []
+    
+    func setupGame() -> [Question] {
+        networkService.fetch(difficulty: .easy, completion: { results in self.questionSet = results} )
+
+        return questionSet
+    }
+}
+
+final class MediumModeStrategy: ChooseDiffilultyStrategy {
+    var networkService: NetworkService = NetworkService.instance
+    var questionSet: [Question] = []
+    
+    func setupGame() -> [Question] {
+        networkService.fetch(difficulty: .medium, completion: { results in self.questionSet = results} )
+
+        return questionSet
     }
 }
 
 final class HardModeStrategy: ChooseDiffilultyStrategy {
-    func setupGame(lifelineButtons: [UIButton]) -> [Question] {
-        lifelineButtons.forEach({ $0.isEnabled = true })
-        return questionsSet.shuffled()
-    }
-}
+    var networkService: NetworkService = NetworkService.instance
+    var questionSet: [Question] = []
+    
+    func setupGame() -> [Question] {
+        networkService.fetch(difficulty: .hard, completion: { results in self.questionSet = results} )
 
-final class InsaneModeStrategy: ChooseDiffilultyStrategy {
-    func setupGame(lifelineButtons: [UIButton]) -> [Question] {
-        lifelineButtons.forEach({ $0.isEnabled = false })
-        return questionsSet.shuffled()
+        return questionSet
     }
 }

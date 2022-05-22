@@ -45,7 +45,7 @@ final class UserQuestionsDatabase: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "userQuestionCell", for: indexPath)
         let question = Game.shared.userQuestions[indexPath.row]
         var rightAnswerLetter: String {
-            switch question.rightAnswer {
+            switch question.correctAnswerNumber {
             case 1: return "A"
             case 2: return "B"
             case 3: return "C"
