@@ -18,10 +18,7 @@
     You can also manage your database, just use the button in the top right corner.
     Clear the database using trash bin button or delete 1 question by swiping to the left on it.
 ### Difficulty options:
-    There are 3 options:
-    Easy - you will get an easy questions set + all the lifelines.
-    Hard - you will get a difficult questions set, but you still get all the lifelines.
-    Insane - here you have a difficult questions set + you have only 'Take cash' lifeline.
+    There are 3 options: Easy, Medium and Hard, choose the right one for yourself!
 ### You also have 4 lifelines:
     "50/50" - it will remove 2 wrong answers
     "Call a friend" - it will show you an answer from AI. Be carefull, it can be tricky!
