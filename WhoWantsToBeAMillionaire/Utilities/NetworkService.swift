@@ -24,7 +24,7 @@ class NetworkService {
         return constructor
     }()
 
-    func fetch(difficulty: Difficulty, completion: @escaping ([Question]) -> Void) {
+    func fetch(difficulty: Difficulty) -> [Question] {
         switch difficulty {
         case .easy:
             urlConstructor.queryItems?.append(URLQueryItem(name: "difficulty", value: "easy"))
@@ -33,7 +33,7 @@ class NetworkService {
         case .hard:
             urlConstructor.queryItems?.append(URLQueryItem(name: "difficulty", value: "hard"))
         }
-        guard let url = urlConstructor.url else { return }
+        guard let url = urlConstructor.url else { return []}
         print(url)
 
         if let data = try? Data(contentsOf: url) {
@@ -49,12 +49,12 @@ class NetworkService {
                                      correctAnswer: question.correctAnswer))
                     }
                     print(questions)
-                    completion(questions)
+                    return questions
                 } catch {
                     print(error)
-                    completion([])
+                    return []
                 }
         }
-
+        return []
     }
 }

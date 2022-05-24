@@ -11,8 +11,8 @@ class MainMenu: UIViewController {
     
     @IBOutlet var difficultyControl: UISegmentedControl! {
         didSet {
-            difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-            difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+            difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.amazingColor], for: .normal)
+            difficultyControl.setTitleTextAttributes([.foregroundColor: UIColor.amazingColor], for: .selected)
         }
     }
     

@@ -18,14 +18,14 @@ class AddQuestionCell: UITableViewCell {
     @IBOutlet var answerD: UITextField!
     @IBOutlet var rightAnswerSelector: UISegmentedControl! {
         didSet {
-            rightAnswerSelector.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-            rightAnswerSelector.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+            rightAnswerSelector.setTitleTextAttributes([.foregroundColor: UIColor.amazingColor], for: .normal)
+            rightAnswerSelector.setTitleTextAttributes([.foregroundColor: UIColor.amazingColor], for: .selected)
         }
     }
     @IBOutlet var difficultySelector: UISegmentedControl! {
         didSet {
-            difficultySelector.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-            difficultySelector.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+            difficultySelector.setTitleTextAttributes([.foregroundColor: UIColor.amazingColor], for: .normal)
+            difficultySelector.setTitleTextAttributes([.foregroundColor: UIColor.amazingColor], for: .selected)
         }
     }
     

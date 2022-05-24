@@ -13,6 +13,7 @@
 		AF1C39CF283184320055B9F1 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39CE283184320055B9F1 /* GameSession.swift */; };
 		AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D0283185BB0055B9F1 /* Game.swift */; };
 		AF1C39D3283186280055B9F1 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */; };
+		AF7CEFC8283D000900CB54BC /* RecordsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7CEFC7283D000900CB54BC /* RecordsViewModelFactory.swift */; };
 		AFA94D0F283441BE00314031 /* ChooseDifficultyStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D0E283441BE00314031 /* ChooseDifficultyStrategy.swift */; };
 		AFA94D112834439E00314031 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D102834439E00314031 /* Difficulty.swift */; };
 		AFA94D13283464DA00314031 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D12283464DA00314031 /* Observer.swift */; };
@@ -29,6 +30,8 @@
 		AFBC315A283ABE5700CAC457 /* QuestionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC3159283ABE5700CAC457 /* QuestionsResponse.swift */; };
 		AFBC315B283AD0E000CAC457 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC3157283A61B000CAC457 /* NetworkService.swift */; };
 		AFBC315D283ADAFA00CAC457 /* HTMLDecodedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC315C283ADAFA00CAC457 /* HTMLDecodedString.swift */; };
+		AFBC315F283CE73800CAC457 /* UIColor extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC315E283CE73800CAC457 /* UIColor extension.swift */; };
+		AFBC3161283CEA0000CAC457 /* NetworkAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC3160283CEA0000CAC457 /* NetworkAdapter.swift */; };
 		AFCD737A282EA45900BB56B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD7379282EA45900BB56B9 /* AppDelegate.swift */; };
 		AFCD737C282EA45900BB56B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */; };
 		AFCD737E282EA45900BB56B9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD737D282EA45900BB56B9 /* MainMenu.swift */; };
@@ -44,6 +47,7 @@
 		AF1C39CE283184320055B9F1 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		AF1C39D0283185BB0055B9F1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
+		AF7CEFC7283D000900CB54BC /* RecordsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsViewModelFactory.swift; sourceTree = "<group>"; };
 		AFA94D0E283441BE00314031 /* ChooseDifficultyStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDifficultyStrategy.swift; sourceTree = "<group>"; };
 		AFA94D102834439E00314031 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		AFA94D12283464DA00314031 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		AFBC3157283A61B000CAC457 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AFBC3159283ABE5700CAC457 /* QuestionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsResponse.swift; sourceTree = "<group>"; };
 		AFBC315C283ADAFA00CAC457 /* HTMLDecodedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLDecodedString.swift; sourceTree = "<group>"; };
+		AFBC315E283CE73800CAC457 /* UIColor extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor extension.swift"; sourceTree = "<group>"; };
+		AFBC3160283CEA0000CAC457 /* NetworkAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAdapter.swift; sourceTree = "<group>"; };
 		AFCD7376282EA45900BB56B9 /* WhoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCD7379282EA45900BB56B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCD737B282EA45900BB56B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +117,8 @@
 				AFA94D2128367F7700314031 /* QuestionBuilder.swift */,
 				AFBC3154283916B600CAC457 /* DifficultySettingsFacade.swift */,
 				AFBC3157283A61B000CAC457 /* NetworkService.swift */,
+				AFBC3160283CEA0000CAC457 /* NetworkAdapter.swift */,
+				AF7CEFC7283D000900CB54BC /* RecordsViewModelFactory.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 				AFA94D1D28366AA200314031 /* ReusableView.swift */,
 				AFA94D1B283669F200314031 /* UITableView(register+dequeue).swift */,
 				AFBC315C283ADAFA00CAC457 /* HTMLDecodedString.swift */,
+				AFBC315E283CE73800CAC457 /* UIColor extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -269,7 +278,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFBC315F283CE73800CAC457 /* UIColor extension.swift in Sources */,
 				AFBC315D283ADAFA00CAC457 /* HTMLDecodedString.swift in Sources */,
+				AFBC3161283CEA0000CAC457 /* NetworkAdapter.swift in Sources */,
 				AF1C39CD283182660055B9F1 /* Records.swift in Sources */,
 				AFA94D242836A4CC00314031 /* UserQuestionsDatabase.swift in Sources */,
 				AFBC315B283AD0E000CAC457 /* NetworkService.swift in Sources */,
@@ -291,6 +302,7 @@
 				AFA94D1C283669F200314031 /* UITableView(register+dequeue).swift in Sources */,
 				AFBC3155283916B600CAC457 /* DifficultySettingsFacade.swift in Sources */,
 				AFA94D16283653B300314031 /* AddQuestionCell.swift in Sources */,
+				AF7CEFC8283D000900CB54BC /* RecordsViewModelFactory.swift in Sources */,
 				AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */,
 				AFBC315A283ABE5700CAC457 /* QuestionsResponse.swift in Sources */,
 			);

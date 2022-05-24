@@ -64,7 +64,7 @@ final class UserQuestionsDatabase: UIViewController, UITableViewDelegate, UITabl
                             Difficulty: \(question.difficulty.rawValue)
                             """
         cell.textLabel?.numberOfLines = 10
-        cell.textLabel?.textColor = .white
+        cell.textLabel?.textColor = .amazingColor
         cell.selectionStyle = .none
         
         return cell
