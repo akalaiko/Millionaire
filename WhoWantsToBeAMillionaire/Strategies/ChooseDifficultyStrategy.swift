@@ -18,7 +18,7 @@ final class EasyModeStrategy: ChooseDiffilultyStrategy {
     var questionSet: [Question] = []
     
     func setupGame() -> [Question] {
-        networkService.fetch(difficulty: .easy, completion: { results in self.questionSet = results} )
+        networkService.fetch(difficulty: .easy, completion: { [weak self] results in self?.questionSet = results} )
 
         return questionSet
     }
@@ -29,7 +29,7 @@ final class MediumModeStrategy: ChooseDiffilultyStrategy {
     var questionSet: [Question] = []
     
     func setupGame() -> [Question] {
-        networkService.fetch(difficulty: .medium, completion: { results in self.questionSet = results} )
+        networkService.fetch(difficulty: .medium, completion: { [weak self] results in self?.questionSet = results} )
 
         return questionSet
     }
@@ -40,7 +40,7 @@ final class HardModeStrategy: ChooseDiffilultyStrategy {
     var questionSet: [Question] = []
     
     func setupGame() -> [Question] {
-        networkService.fetch(difficulty: .hard, completion: { results in self.questionSet = results} )
+        networkService.fetch(difficulty: .hard, completion: { [weak self] results in self?.questionSet = results} )
 
         return questionSet
     }
