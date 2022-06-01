@@ -13,6 +13,7 @@
 		AF1C39CF283184320055B9F1 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39CE283184320055B9F1 /* GameSession.swift */; };
 		AF1C39D1283185BB0055B9F1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D0283185BB0055B9F1 /* Game.swift */; };
 		AF1C39D3283186280055B9F1 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */; };
+		AF7802EB2847A76A001D8EEE /* NetworkServiceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7802EA2847A76A001D8EEE /* NetworkServiceProxy.swift */; };
 		AFA94D0F283441BE00314031 /* ChooseDifficultyStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D0E283441BE00314031 /* ChooseDifficultyStrategy.swift */; };
 		AFA94D112834439E00314031 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D102834439E00314031 /* Difficulty.swift */; };
 		AFA94D13283464DA00314031 /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA94D12283464DA00314031 /* Observer.swift */; };
@@ -44,6 +45,7 @@
 		AF1C39CE283184320055B9F1 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		AF1C39D0283185BB0055B9F1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AF1C39D2283186280055B9F1 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
+		AF7802EA2847A76A001D8EEE /* NetworkServiceProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProxy.swift; sourceTree = "<group>"; };
 		AFA94D0E283441BE00314031 /* ChooseDifficultyStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDifficultyStrategy.swift; sourceTree = "<group>"; };
 		AFA94D102834439E00314031 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		AFA94D12283464DA00314031 /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				AFA94D2128367F7700314031 /* QuestionBuilder.swift */,
 				AFBC3154283916B600CAC457 /* DifficultySettingsFacade.swift */,
 				AFBC3157283A61B000CAC457 /* NetworkService.swift */,
+				AF7802EA2847A76A001D8EEE /* NetworkServiceProxy.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				AFA94D0F283441BE00314031 /* ChooseDifficultyStrategy.swift in Sources */,
 				AFA94D2228367F7700314031 /* QuestionBuilder.swift in Sources */,
 				AFA94D1A283667B700314031 /* AddQuestionController.swift in Sources */,
+				AF7802EB2847A76A001D8EEE /* NetworkServiceProxy.swift in Sources */,
 				AFCD737A282EA45900BB56B9 /* AppDelegate.swift in Sources */,
 				AFA94D2028366F4000314031 /* UserQuestionsCaretaker.swift in Sources */,
 				AFA94D1E28366AA200314031 /* ReusableView.swift in Sources */,
